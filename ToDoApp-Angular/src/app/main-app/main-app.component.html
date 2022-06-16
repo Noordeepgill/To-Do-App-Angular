@@ -1,0 +1,49 @@
+<div class="main-container">
+    <div class="container-ele">
+        <div class="add-btn-cls">
+            <button class="btn btn-success add-btn" (click)="displayAddTask()">+ Add Task</button>
+        </div>
+        <div *ngFor="let ele of todoelements; let indexOfelement=index;" class="task-count">
+            <div class="task-head" [ngStyle]="{'border-left': taskheadbordercolor}">
+                <div class="task-container">
+                    <img src="../../assets/images/pen.svg" alt="pen" class="pen-cust">
+                    <span class="task-name">{{ ele.task }}</span></div>
+                <div class="desc-container">{{ ele.description }}</div>
+                <div class="btn-cust">
+                    <button (click)="removeTask(indexOfelement)" class="btn btn-danger">X</button>
+                    <button (click)="updatetask(indexOfelement)" class="btn btn-info">Update</button>
+                    <button (click)="markascompleted(indexOfelement)" class="btn btn-success">Mark as Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-add-task" [ngStyle]="{'display': addtaskdisplayval}">
+    <div class="add-task">
+        <div class="close-btn-container">
+            <span class="close-btn" (click)="hideAddTask()">X</span>
+        </div>
+        <span class="add-task-header">Add Task</span>
+        <input [(ngModel)]="task" placeholder="New Task" class="form-control cust-form" required>
+        <input [(ngModel)]="desc" placeholder="Description" class="form-control cust-form" required>
+        <div class="add-btn-container">
+            <button type="button" class="btn btn-outline-success"  (click)="addtask()" >Add Task</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-update-task" [ngStyle]="{'display': updatetaskdisplayval}">
+    <div class="update-task">
+        <div class="close-btn-container">
+            <span class="close-btn" (click)="hideUpdateTask()">X</span>
+        </div>
+        <span class="update-task-header">Update Task</span>
+        <input [(ngModel)]="updatetaskval" placeholder="Update Task" class="form-control cust-form" required>
+        <input [(ngModel)]="updatedescval" placeholder="Update Description" class="form-control cust-form" required>
+        <div class="update-btn-container">
+            <button type="button" (click)="updatecurrenttask()" class="btn btn-outline-success btn-update">Update Task</button>
+        </div>
+    </div>
+</div>
+
